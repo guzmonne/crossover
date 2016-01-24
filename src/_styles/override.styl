@@ -1,0 +1,64 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto)
+@import './variables.styl'
+@import './custom-icons.styl'
+@import './app.styl'
+@import './item.styl'
+
+/* Main */
+body
+	font-family 'Roboto', sans-serif
+	background-color whitesmoke
+
+#root
+	margin-top 80px
+
+/* Alerts */
+.alert-info
+	background-color #d9edf7
+	border-color #bce8f1
+	color #31708f 
+	
+/* Columns */
+.col-degutter-l
+	padding-right 0
+	
+.col-degutter-r
+	padding-left 0
+	
+.row-p
+	margin-top 20px
+
+.col-p
+	margin-right 10px
+	
+.col-p-20
+	float left
+	width 20%
+	margin-left 0px
+	margin-right 0px
+	padding-left 0px
+	padding-right 0px
+	
+	&:nth-of-type(5) .col-p
+		margin-right 0px
+
+.clear
+	clear both
+		
+.box	
+	background-color white
+	height 150px
+
+/* Alerts */
+.alert
+	border-width 3px 
+	border-radius 0
+	
+/* Progress Bars */
+.progress
+	height 40px
+	margin-bottom 0
+	
+.progress-bar
+	min-width 2em
+	line-height 40px

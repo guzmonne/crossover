@@ -31,3 +31,12 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+# Parse related files
+.parse/
+
+# Parse Cloud Code related files 
+server/.parse*
+
+# Readme Build
+README.html

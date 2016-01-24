@@ -1,0 +1,35 @@
+/* Item */
+
+span.Item__text
+	line-height 40px
+	
+a.Item__anchor
+	text-decoration none
+	color inherit
+	&:hover
+		text-decoration none
+
+.alert-danger a.Item__anchor:hover
+	color $darkRed
+	
+.alert-info a.Item__anchor:hover
+	color $darkInfo
+	
+.Item__info
+	height 0
+	visibility hidden
+	opacity 0
+	transition visibility 0s, height 0.4s ease-out, opacity 0.7s
+	
+.Item__info.Item__info_opened
+	height 180px
+	visibility visible
+	opacity 1
+	
+.Item__box
+	display none
+	height 150px
+	background-color white
+	
+.Item__info_opened .Item__box
+	display block
