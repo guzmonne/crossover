@@ -19,17 +19,121 @@ a.Item__anchor
 	height 0
 	visibility hidden
 	opacity 0
-	transition visibility 0s, height 0.4s ease-out, opacity 0.7s
+	transition visibility 0s, height 0.4s ease, opacity 0.7s linear 0.2s
+	margin-top 10px
 	
 .Item__info.Item__info_opened
-	height 180px
+	height 200px
 	visibility visible
 	opacity 1
 	
 .Item__box
 	display none
-	height 150px
-	background-color white
+	height 200px
+	padding 5px
 	
+.alert-danger.Item__box 
+	background-color: $brighterRed
+	
+.alert-success.Item__box 
+	background-color: $brighterGreen
+	
+.Item__box p
+	margin-bottom 2px
+	padding-top 5px
+	
+.Item__box .col-xs-8, .Item__box .col-xs-6, .Item__box .col-xs-4
+	padding 0
+
+.Item__box > .col-xs-6:nth-of-type(even)
+	padding-right 5px
+
+.Item__box > .col-xs-6:nth-of-type(odd)
+	padding-left 5px
+
 .Item__info_opened .Item__box
 	display block
+	margin 0
+	
+.Item__heading
+	padding-left 18px
+	padding-right 18px
+
+.Item__progress-bars
+	opacity 1
+	transition opacity 0.3s
+
+.Item__progress-bars.closed
+	opacity 0
+	
+p.Item__arrow
+	line-height 50px
+
+p.Item__arrow-text
+	color black
+	
+.Item__arrow-container
+	position relative
+	
+.Item__arrow-value
+	color white
+	font-size 12px
+
+.Item__arrow-container:nth-of-type(even) .Item__arrow-value
+	position absolute
+	top 20px
+	left 43px
+		
+.Item__arrow-container:nth-of-type(odd) .Item__arrow-value
+	position absolute
+	top 20px
+	left 45px
+	
+.Item__arrow-container:nth-of-type(4) .Item__arrow-value
+	top 22px
+	color black
+	
+.Item__arrow-container:nth-of-type(5) .Item__arrow-value
+	top 22px
+	color black
+
+.Item__build-pc-container
+	margin-top 10px
+
+.Item__build-pc
+	font-size 70px
+	
+.Item__build-date
+	line-height 80px
+	color black
+
+.Item__build-pc-title
+	margin-top -20px
+	
+.Item__unit-test-progress-bar
+	position relative
+	padding 0
+	
+.Item__unit-test-progress-bar-text
+	position absolute
+	top 0px
+	left 65px
+
+.Item__unit-test-progress-bar > .progress
+	background-color $brightOrange 
+	border-radius 0
+	
+.Item__unit-test-progress-bar .progress-bar
+	background-color $brightGreen
+	
+.Item__unit-test-progress-bar p
+	text-align center
+	color black
+	font-size 10px
+	
+p.Item__unit-test-passed
+	font-size 35px
+	
+p.Item__unit-test-passed-text
+	color black
+	margin-top -15px

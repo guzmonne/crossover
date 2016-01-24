@@ -2,6 +2,9 @@ import React from 'react'
 import ItemIconType from './item-icon-type.js'
 import ItemStarted from './item-started.js'
 import ItemProgressBar from './item-progress-bar.js'
+import ItemMetrics from './item-metrics.js'
+import ItemBuild from './item-build.js'
+import ItemUnitTest from './item-unit-test.js'
 
 export default class Item extends React.Component {
 
@@ -52,21 +55,23 @@ export default class Item extends React.Component {
 					<span className="Item__text">{state.capitalizeFirstLetter()}</span>
 				</div>
 
-				<div className="col-xs-1">
-					<ItemProgressBar progress={metrics} />
-				</div>
+				<div className={active ? 'Item__progress-bars closed' : 'Item__progress-bars'}>
+					<div className="col-xs-1">
+						<ItemProgressBar progress={metrics.progress} />
+					</div>
 
-				<div className="col-xs-1">
-					<ItemProgressBar progress={build} />
-				</div>
+					<div className="col-xs-1">
+						<ItemProgressBar progress={build} />
+					</div>
 
-				<div className="col-xs-1">
-					<ItemProgressBar progress={unitTest} />
-				</div>
+					<div className="col-xs-1">
+						<ItemProgressBar progress={unitTest} />
+					</div>
 
-				<div className="col-xs-1">
-					<ItemProgressBar progress={functionalTest} />
-				</div>
+					<div className="col-xs-1">
+						<ItemProgressBar progress={functionalTest} />
+					</div>
+				</div>	
 
 				<div className={active ? 'col-xs-12 Item__info Item__info_opened' : 'Item__info'}>
 
@@ -74,19 +79,19 @@ export default class Item extends React.Component {
 						
 						<div className="col-p-20">
 							<div className="col-p">
-								<div className="Item__box"></div>
+								<ItemMetrics {...metrics} />
 							</div>
 						</div>
 						
 						<div className="col-p-20">
 							<div className="col-p">
-								<div className="Item__box"></div>
+								<ItemBuild {...build} />
 							</div>
 						</div>
 						
 						<div className="col-p-20">
 							<div className="col-p">
-								<div className="Item__box"></div>
+								<ItemUnitTest {...unitTest} />
 							</div>
 						</div>
 						

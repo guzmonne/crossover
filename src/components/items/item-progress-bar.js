@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({progress}) => {
+export default ({progress, children, active, striped}) => {
 
 	const barStyle = {
 		width: `${progress}%`
@@ -10,7 +10,9 @@ export default ({progress}) => {
 
 		<div className="progress">
 
-			<div className="progress-bar progress-bar-primary progress-bar-striped active" style={barStyle}></div>
+			<div className={`progress-bar progress-bar-primary ${!!striped ? 'progress-bar-striped' : null} ${!!active ? 'active' : null}`} style={barStyle}>
+				{children}
+			</div>
 
 		</div>
 

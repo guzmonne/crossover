@@ -34,38 +34,38 @@ export default class App extends React.Component {
 
 		return (
 			<div className="container">
-				<div className="row">
+				<div className="row Item__heading">
 					
 					<div className="col-xs-3">
-						<h4 className="App__column_header">Changelist / Build</h4>
+						<h5 className="App__column_header">Changelist / Build</h5>
 					</div>
 
 					<div className="col-xs-2">
-						<h4 className="App__column_header">Owner</h4>
+						<h5 className="App__column_header">Owner</h5>
 					</div>
 
 					<div className="col-xs-2">
-						<h4 className="App__column_header">Time Started</h4>
+						<h5 className="App__column_header">Time Started</h5>
 					</div>
 
 					<div className="col-xs-1">
-						<h4 className="App__column_header">State</h4>
+						<h5 className="App__column_header">State</h5>
 					</div>
 
 					<div className="col-xs-1">
-						<h4 className="text-center App__column_header">Metrics</h4>
+						<h5 className="text-center App__column_header">Metrics</h5>
 					</div>
 
 					<div className="col-xs-1">
-						<h4 className="text-center App__column_header">Build</h4>
+						<h5 className="text-center App__column_header">Build</h5>
 					</div>
 
 					<div className="col-xs-1">
-						<h4 className="text-center App__column_header">Unit Test</h4>
+						<h5 className="text-center App__column_header">Unit Test</h5>
 					</div>
 
 					<div className="col-xs-1">
-						<h4 className="text-center App__column_header">Functional Test</h4>
+						<h5 className="text-center App__column_header">Functional Test</h5>
 					</div>
 
 				</div>
