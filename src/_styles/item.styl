@@ -37,7 +37,14 @@ a.Item__anchor
 	
 .alert-success.Item__box 
 	background-color: $brighterGreen
+
+.Item__box	
+	cursor pointer
+	opacity 0.9
 	
+.Item__box:hover
+	opacity 1
+
 .Item__box p
 	margin-bottom 2px
 	padding-top 5px
@@ -82,12 +89,12 @@ p.Item__arrow-text
 .Item__arrow-container:nth-of-type(even) .Item__arrow-value
 	position absolute
 	top 20px
-	left 43px
+	left 41px
 		
 .Item__arrow-container:nth-of-type(odd) .Item__arrow-value
 	position absolute
 	top 20px
-	left 45px
+	left 48px
 	
 .Item__arrow-container:nth-of-type(4) .Item__arrow-value
 	top 22px
@@ -133,7 +140,16 @@ p.Item__arrow-text
 	
 p.Item__unit-test-passed
 	font-size 35px
+	line-height 100px
 	
 p.Item__unit-test-passed-text
 	color black
-	margin-top -15px
+	margin-top -40px
+	
+.col-xs-8.Item__unit-test-pie-chart
+	padding-right 15px
+	padding-left 15px
+	padding-top 15px
+	
+.Item__result
+	color black

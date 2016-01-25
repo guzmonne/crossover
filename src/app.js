@@ -5,10 +5,7 @@ require('./_styles/override.styl')
 
 import React from 'react'
 import { render } from 'react-dom'
-import moment from 'moment'
 import App from './components/main-app.js'
-
-window.moment = moment
 
 /*****************************************/
 /* Helper function to capitalize strings */

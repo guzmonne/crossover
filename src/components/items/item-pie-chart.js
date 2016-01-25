@@ -1,21 +1,27 @@
 import React from 'react'
+import PieChart from 'react-simple-pie-chart'
 import ItemProgressBar from './item-progress-bar.js'
 import {random} from '../../utils/helpers.js'
 
-export default ({}) => {
+const progress = random(100)
+const passed   = random(100)
+const pie      = random(100)
+const slices = [
+	{ color: '#72AC4D', value: pie},
+	{ color: '#EB7D3B', value: 100 - pie}
+]  
 
-	const progress = random(100)
-	const passed   = random(100)
+export default ({title}) => {
 
 	return (
 
 		<div className='alert alert-success Item__box'>
 			<div className="col-xs-12">
-				<strong>Unit Test</strong>
+				<strong>{title}</strong>
 			</div>
 
-			<div className="col-xs-8">
-
+			<div className="col-xs-8 Item__unit-test-pie-chart">
+				<PieChart slices={slices} />
 			</div>
 
 			<div className="col-xs-4">

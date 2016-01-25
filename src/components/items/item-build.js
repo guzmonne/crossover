@@ -1,6 +1,8 @@
 import React from 'react'
 import { parsedDate, randomDate } from '../../utils/helpers.js'
 
+const randomParsedDate = parsedDate( randomDate() ) 
+
 export default ({}) => {
 
 	return (
@@ -20,7 +22,7 @@ export default ({}) => {
 			</div>
 
 			<div className="col-xs-12 text-center Item__build-date">
-				{ parsedDate( randomDate() ) }
+				{ randomParsedDate }
 			</div>
 
 		</div>
