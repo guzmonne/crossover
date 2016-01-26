@@ -8,7 +8,7 @@ export default ({progress, children, active, striped}) => {
 
 	return (
 
-		<div className="progress">
+		<div className={`progress ${progress === 0 ? 'progress-bar-empty' : null}`}>
 
 			<div className={`progress-bar progress-bar-primary ${!!striped ? 'progress-bar-striped' : null} ${!!active ? 'active' : null}`} style={barStyle}>
 				{children}

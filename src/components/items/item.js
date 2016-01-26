@@ -30,11 +30,24 @@ export default class Item extends React.Component {
 		}
 
 		this.openModalFunctions = {
-			openMetricsModal        : () => {this.setState({metricsModalOpened: true})},
-			openBuildModal          : () => {this.setState({buildModalOpened: true})},
-			openUnitTestModal       : () => {this.setState({unitTestModalOpened: true})},
-			openFunctionalTestModal : () => {this.setState({functionalTestModalOpened: true})},
+			openMetricsModal        : () => {this.setState(Object.assign({}, this.state, {metricsModalOpened: true}))},
+			openBuildModal          : () => {this.setState(Object.assign({}, this.state, {buildModalOpened: true}))},
+			openUnitTestModal       : () => {this.setState(Object.assign({}, this.state, {unitTestModalOpened: true}))},
+			openFunctionalTestModal : () => {this.setState(Object.assign({}, this.state, {functionalTestModalOpened: true}))},
 		}
+	}
+
+	shouldComponentUpdate(newProps){
+		const check = (
+			newProps.active !== this.props.active ||
+			newProps.state !== this.props.state ||
+			newProps.metrics.progress !== this.props.metrics.progress ||
+			newProps.unitTest.progress !== this.props.unitTest.progress ||
+			newProps.functionalTest.progress !== this.props.functionalTest.progress ||
+			newProps.build !== this.props.build
+		)
+
+		return check
 	}
 
 	onClose(){
@@ -57,10 +70,10 @@ export default class Item extends React.Component {
 		const {state, active} = this.props
 
 		return (
-			<div className={"row alert alert-" + this.itemClassState[state]}>
+			<div className={"Item row alert alert-" + this.itemClassState[state]}>
 
 				<ItemDetailRow {...this.props} onActivate={this.onActivate} />
-				{active ? (state === 'running' ? <Loading /> : <ItemInfoRow {...this.props} {...this.openModalFunctions} />) : null }
+				{state === 'running' ? <Loading active={active}/> : <ItemInfoRow {...this.props} {...this.openModalFunctions} />}
 
 				<ItemModal title="Metrics Modal" body={this.props} show={this.state.metricsModalOpened} close={this.onClose}/>
 				<ItemModal title="Build Modal" body={this.props} show={this.state.buildModalOpened} close={this.onClose}/>

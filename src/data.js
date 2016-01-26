@@ -50,33 +50,81 @@ export const randomMockItem = (options=_options) => {
 			}
 		},
 		build          : random(100),
-		unitTest       : random(100),
-		functionalTest : random(100),
+		unitTest       : {
+			progress : random(100),
+			covered  : random(100),
+			passed   : random(100),
+			pie      : random(100),
+		},
+		functionalTest : {
+			progress : random(100),
+			covered  : random(100),
+			passed   : random(100),
+			pie      : random(100),
+		},
 	}
 }
 
+export const randomPendingMockItem = () => {
+	const seed = randomMockItem()
+
+	return Object.assign({}, 
+		seed,
+		{
+			state          : 'pending',
+			metrics        : Object.assign({}, seed.metrics, { progress: 0 }),
+			unitTest       : Object.assign({}, seed.unitTest, { progress: 0 }),
+			functionalTest : Object.assign({}, seed.functionalTest, { progress: 0 }),
+			build          : 0
+		}
+	)
+} 
+
 export default {
 
-	collection: new Rx.Subject(),
+	randomMockItem,
+
+	randomPendingMockItem,
 
 	fetch(){
-		console.log('Fetching!');
-
 		const mockLatency = random(3000);
 
-		Rx.Observable.
+		return Rx.Observable.
 			just(mockLatency).
 			flatMap(latency => Rx.Observable.
 				just().
 				delay(latency)
 			).
 			flatMap(() => Rx.Observable.
-				range(0, random(9) + 1).
-				map(i => randomMockItem()).
+				range(0, 6).
+				map(i => randomPendingMockItem()).
 				reduce((items, item) => [...items, item], [])
 			).
-			do(items => console.log(items)).
-			subscribe(data => this.collection.onNext(data))
+			flatMap(items => Rx.Observable.
+				interval(500).
+				map(i => items.filter(item => (item.state === 'pending' || item.state === 'running')).slice(0, 3)).
+				takeWhile(fItems => fItems.length > 0).
+				flatMap(fItems => Rx.Observable.
+					fromArray(fItems).
+					map(item => {
+						if (item.state === 'pending') 
+							item.state = 'running'
+						else if (item.metrics.progress < 99)
+							item.metrics = Object.assign({}, item.metrics, {progress: item.metrics.progress + random(100)})
+						else if (item.build < 99)
+							item.build = item.build + random(100)
+						else if (item.unitTest.progress < 99)
+							item.unitTest = Object.assign({}, item.unitTest, {progress: item.unitTest.progress + random(100)})
+						else if (item.functionalTest.progress < 99)
+							item.functionalTest = Object.assign({}, item.functionalTest, {progress: item.functionalTest.progress + random(100)})
+						else
+							item.state = item.type === 'build' ? 'complete' : 'accepted'
+						return item
+					}).
+					map(item => {if (random(100) > 98) item.state = (item.type === 'build' ? 'error' : 'rejected')}).
+					map(() => [...items])
+				)
+			)
 	}
 
 }

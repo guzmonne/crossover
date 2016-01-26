@@ -3,6 +3,7 @@ import React from 'react'
 import ItemIconType from './item-icon-type.js'
 import ItemStarted from './item-started.js'
 import ItemProgressBar from './item-progress-bar.js'
+import {parsedDate} from '../../utils/helpers.js'
 
 export default ({type, state, id, owner, started, metrics, build, unitTest, functionalTest, active, onActivate}) => {
 
@@ -23,7 +24,7 @@ export default ({type, state, id, owner, started, metrics, build, unitTest, func
 			</div>
 
 			<div className="className col-xs-2">
-				<ItemStarted started={started} />
+				<ItemStarted started={parsedDate(started)} />
 			</div>
 
 			<div className="col-xs-1">
@@ -40,11 +41,11 @@ export default ({type, state, id, owner, started, metrics, build, unitTest, func
 				</div>
 
 				<div className="col-xs-1">
-					<ItemProgressBar progress={unitTest} />
+					<ItemProgressBar progress={unitTest.progress} />
 				</div>
 
 				<div className="col-xs-1">
-					<ItemProgressBar progress={functionalTest} />
+					<ItemProgressBar progress={functionalTest.progress} />
 				</div>
 			</div>
 		</div>

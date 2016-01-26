@@ -18,8 +18,6 @@ export default ({test, maintainability, security, workmanship, prev}) => {
 	const check = (val, prev) => val < prev
 	const state = check(test, prev.test) || check(maintainability, prev.maintainability)
 
-	console.log(test, prev.test, check(test, prev.test), check(maintainability, prev.maintainability))
-
 	return (
 
 		<div className={state ? 'alert alert-danger Item__box' : 'alert alert-success Item__box'}>

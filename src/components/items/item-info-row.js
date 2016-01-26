@@ -3,9 +3,13 @@ import ItemMetrics from './item-metrics.js'
 import ItemBuild from './item-build.js'
 import ItemPieChart from './item-pie-chart.js'
 import ItemResult from './item-result.js'
+import {random} from '../../utils/helpers.js'
+
+/*
+*/
+
 
 export default ({type, state, id, owner, started, metrics, build, unitTest, functionalTest, active, openMetricsModal, openBuildModal, openUnitTestModal, openFunctionalTestModal}) => {
-
 	return (
 		<div className={active ? 'col-xs-12 Item__info Item__info_opened' : 'Item__info'}>
 
@@ -25,19 +29,19 @@ export default ({type, state, id, owner, started, metrics, build, unitTest, func
 					
 					<div className="col-p-20" onClick={openUnitTestModal}>
 						<div className="col-p">
-							<ItemPieChart title="Unit Test" />
+							<ItemPieChart title="Unit Test" {...unitTest}/>
 						</div>
 					</div>
 					
 					<div className="col-p-20" onClick={openFunctionalTestModal}>
 						<div className="col-p">
-							<ItemPieChart title="Functional Test" />
+							<ItemPieChart title="Functional Test" {...functionalTest} />
 						</div>
 					</div>
 					
 					<div className="col-p-20">
 						<div className="col-p">
-							<ItemResult state={state} type={type}/>
+							<ItemResult state={state} type={type} />
 						</div>
 					</div>
 
