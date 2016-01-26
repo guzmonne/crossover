@@ -33,19 +33,25 @@ export default class Item extends React.Component {
 			openMetricsModal        : () => {this.setState(Object.assign({}, this.state, {metricsModalOpened: true}))},
 			openBuildModal          : () => {this.setState(Object.assign({}, this.state, {buildModalOpened: true}))},
 			openUnitTestModal       : () => {this.setState(Object.assign({}, this.state, {unitTestModalOpened: true}))},
-			openFunctionalTestModal : () => {this.setState(Object.assign({}, this.state, {functionalTestModalOpened: true}))},
+			functionalTestModalOpened : () => {this.setState(Object.assign({}, this.state, {functionalTestModalOpened: true}))},
 		}
 	}
 
-	shouldComponentUpdate(newProps){
+	shouldComponentUpdate(newProps, newState){
 		const check = (
-			newProps.active !== this.props.active ||
-			newProps.state !== this.props.state ||
-			newProps.metrics.progress !== this.props.metrics.progress ||
-			newProps.unitTest.progress !== this.props.unitTest.progress ||
-			newProps.functionalTest.progress !== this.props.functionalTest.progress ||
-			newProps.build !== this.props.build
+			newProps.active                    !== this.props.active ||
+			newProps.state                     !== this.props.state ||
+			newProps.metrics.progress          !== this.props.metrics.progress ||
+			newProps.unitTest.progress         !== this.props.unitTest.progress ||
+			newProps.functionalTest.progress   !== this.props.functionalTest.progress ||
+			newProps.build                     !== this.props.build ||
+			newState.metricsModalOpened        !== this.state.metricsModalOpened ||
+			newState.buildModalOpened          !== this.state.buildModalOpened ||
+			newState.unitTestModalOpened       !== this.state.unitTestModalOpened ||
+			newState.functionalTestModalOpened !== this.state.openMetricsModal
 		)
+
+		console.log(newState)
 
 		return check
 	}
